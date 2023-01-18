@@ -9,26 +9,32 @@ if (isset($_SESSION['loggedIn']) && isset($_SESSION['name'])) {
 include("database/db.php");
 
 
-function createCommentRow($data) {
+function createCommentRow($data, $isComment = false) {
     global $conn;
 
     $response = '
-            <div class="comment">
+            <div class="comment mb-2 pb-1 px-2 bg-light text-break rounded-3 border">
                 <span style="font-size: 18px;"class="user text-primary ">'.$data['name'].' :</span>
                 <span class="text-info" style="font-size: 10px;">'.$data['createdOn'].'</span>
-                <p class="userComment mx-5 text-gray-dark">'.$data['comment'].'</p>
-                <div class="reply mb-2">
-                <a style="font-size: 10px;" class="text-secondary" href="javascript:void(0)" data-commentID="'.$data['id'].'" onclick="reply(this) " data-i18n="reply">REPLY</a>
-                </div>
-                <div class="replies mt-2 mx-5">';
+                <p class="userComment mx-5 text-gray-dark w-75" >'.$data['comment'].'</p>';
+                
+    if($isComment) {
+        $response .= '<div class="reply mb-2">
+        <a style="font-size: 10px;" class="text-secondary border border-2 rounded-3 px-1" href="javascript:void(0)" data-commentID="'.$data['id'].'" onclick="reply(this)">REPLY</a>
+        </div>';
+    }
 
-    $sql = $conn->query("SELECT replies.id, name, comment, DATE_FORMAT(replies.createdOn, '%Y-%m-%d || %H:%i') AS createdOn FROM replies INNER JOIN users ON replies.userID = users.id WHERE replies.commentID = '".$data['id']."' ORDER BY replies.id LIMIT 20");
-    while($dataR = $sql->fetch_assoc())
-        $response .= createCommentRow($dataR);
+    $response .= '<div class="replies mt-2 mx-lg-5 text-break">';
+
+    if($isComment) {
+        $sql = $conn->query("SELECT replies.id, name, comment, DATE_FORMAT(replies.createdOn, '%Y-%m-%d & %H:%i') AS createdOn FROM replies INNER JOIN users ON replies.userID = users.id WHERE replies.commentID = '".$data['id']."' ORDER BY replies.id LIMIT 20");
+        while($dataR = $sql->fetch_assoc())
+            $response .= createCommentRow($dataR);
+    }
 
     $response .= '
                 </div>
-            </div>
+            </div> 
         ';
 
     return $response;
@@ -38,9 +44,9 @@ if (isset($_POST['getAllComments'])) {
     $start = $conn->real_escape_string($_POST['start']);
 
     $response = "";
-    $sql = $conn->query("SELECT comments.id, name, comment, DATE_FORMAT(comments.createdOn, '%Y-%m-%d || %H:%i') AS createdOn FROM comments INNER JOIN users ON comments.userID = users.id ORDER BY comments.id DESC LIMIT $start, 20");
+    $sql = $conn->query("SELECT comments.id, name, comment, DATE_FORMAT(comments.createdOn, '%Y-%m-%d & %H:%i') AS createdOn FROM comments INNER JOIN users ON comments.userID = users.id ORDER BY comments.id DESC LIMIT $start, 20");
     while($data = $sql->fetch_assoc())
-        $response .= createCommentRow($data);
+        $response .= createCommentRow($data, true);
 
     exit($response);
 }

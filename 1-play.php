@@ -1,5 +1,4 @@
-
-
+<?php include ("control/Controller.php"); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,7 +13,6 @@
     <link href="lib/bootstrap/bootstrap.min.css" rel="stylesheet">
     <link href="css/game.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
-
     <!-- Fonts -->
     <link href="lib/font/Jost-font.css" rel="stylesheet">
 
@@ -30,15 +28,12 @@
     <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
         <div class="container">
             <div class="row gx-5">
-
-
                 <div id="game-over" class="control-buttons">
-                    <span>Start Game</span>
+                    <span data-i18n="start">Start Game</span>
                 </div>
-
                 <div class="info-container">
                     <div class="name">
-                        Hello: <span><?php echo $_SESSION['user']['name'];?></span>
+                        <span class="px-1" data-i18n="hello">Hello: </span><span><?php echo $_SESSION['name'];?></span>
                     </div>
                     <div class="icon">
                         <div id="light" class="haid">
@@ -56,7 +51,7 @@
                         </div>
                     </div>
                     <div class="tries">
-                        Wrong Tries: <span>0</span>
+                    <p class="px-1 d-inline" data-i18n="wrong">Wrong Tries: </p><span>0</span>
                     </div>
                 </div>
 
@@ -193,7 +188,7 @@
                 </div>
 
                 <div class="reload mt-5">
-                    <span onclick="location.reload()">Reload</span>
+                    <span onclick="location.reload()" data-i18n="reload">Reload</span>
                 </div>
 
                 <audio id="start" src="audio/start.mp3" preload="auto"></audio>
@@ -216,9 +211,10 @@
     <!-- JavaScript Libraries -->
     <script src="lib/jquery/jquery.js"></script>
     <script src="lib/bootstrap/bootstrap.js"></script>
-
     <!--Javascript -->
     <script src="js/game.js"></script>
+    <!-- trans code -->
+    <script src="js/script.js"></script>
     <!-- trans code -->
     <script src="js/script.js"></script>
 </body>

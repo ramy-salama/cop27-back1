@@ -1,9 +1,5 @@
 
-<?php
- include ("control/Controller.php");
-  if (isset($_SESSION['loggedIn']) && isset($_SESSION['name'])  ) {
-  } 
-?>
+<?php include ("control/Controller.php"); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,8 +11,8 @@
     <meta content="Sharm El-Sheikh Climate Change Conference - November 2022" name="description">
     <link href="img/0-icon.png" rel="icon">
 
-    <!--Style CSS-->
-    <link href="lib/bootstrap/bootstrap.min.css" rel="stylesheet">
+     <!--Style CSS-->
+     <link href="lib/bootstrap/bootstrap.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
 
     <!-- Fonts -->
@@ -65,7 +61,6 @@
 
     <!--Javascript -->
     <script src="js/main.js"></script>
-
     <!-- trans code -->
     <script src="js/script.js"></script>
 

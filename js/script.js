@@ -3,17 +3,21 @@ const translations = {
         downloPDF: "Download PDF",
         // comments-------------------------------------------------------------
         comments: "Comments",
-        addReply: "Add Comment",
+        addComments: "Add Comment",
         reply: "Reply",
         addReply: "Add Reply",
         close: "Close",
-        
+        // play-------------------------------------------------------------
+        start: "Start Game",
+        wrong: "Wrong Tries: ",
+        reload: "Reload",
         // login-------------------------------------------------------------
         login: "Login",
-        signin: "Signin",
-        signup: "Sign Up",
+        signin: "SignIn",
+        signup: "SignUp",
         logout: "Logout",
         account: "Don't have an account?",
+        iAlready: "I already have an account",
         registration: "Registration",
         registrationNew: "New Registration",
         // nav ---------------------------------------------------------------------
@@ -83,12 +87,17 @@ const translations = {
         reply: "رد", 
         addReply: "إضافة رد",
         close: "أغلق",
+        // play-------------------------------------------------------------
+        start: "إبدأ اللعب",
+        wrong: "محـاولات خـاطئة :",
+        reload: "اعادة تحميل",
         // login-------------------------------------------------------------
         login: "دخول",
         signin: " تسجيل دخــول",
         signup: "تسجــــيل",
         logout: "تسجيل خروج",
         account: "ليس لديك حساب؟",
+        iAlready: "لدى حساب بالفعل",
         registration: "التسجيل",
         registrationNew: "تسجــــيل جـــديد",
         // nav ---------------------------------------------------------------------

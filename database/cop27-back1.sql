@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 13, 2023 at 11:22 AM
+-- Generation Time: Jan 18, 2023 at 04:28 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -39,8 +39,8 @@ CREATE TABLE `comments` (
 --
 
 INSERT INTO `comments` (`id`, `userID`, `comment`, `createdOn`) VALUES
-(35, 17, 'السلام عليكم', '2023-01-11 19:23:09'),
-(41, 18, 'hello everyone', '2023-01-13 12:16:37');
+(52, 17, 'السلام عليكم', '2023-01-16 18:24:59'),
+(53, 18, 'hello everyone', '2023-01-16 18:27:36');
 
 -- --------------------------------------------------------
 
@@ -61,11 +61,15 @@ CREATE TABLE `replies` (
 --
 
 INSERT INTO `replies` (`id`, `commentID`, `comment`, `createdOn`, `userID`) VALUES
-(34, 35, 'وعليكم السلام ورحمة الله وبركاته', '2023-01-11 19:23:43', 18),
-(91, 35, 'كيف حالك', '2023-01-13 12:03:38', 17),
-(92, 35, 'الحمد لله', '2023-01-13 12:04:04', 18),
-(93, 35, 'ماذا تفعل', '2023-01-13 12:04:34', 18),
-(94, 41, 'hello yousif', '2023-01-13 12:18:30', 17);
+(106, 52, 'وعليكم السلام ورحمة الله وبركاته', '2023-01-16 18:25:52', 18),
+(107, 52, 'كيف حالك', '2023-01-16 18:26:11', 18),
+(108, 52, 'الحمد لله', '2023-01-16 18:26:35', 17),
+(109, 53, 'hello yousif', '2023-01-16 18:28:15', 17),
+(110, 53, 'hello ramy', '2023-01-16 18:28:54', 18),
+(112, 53, 'how are you ', '2023-01-18 13:13:11', 17),
+(113, 53, 'I`m fine thank you ', '2023-01-18 13:14:33', 18),
+(114, 53, 'how old are you', '2023-01-18 13:15:26', 17),
+(115, 53, 'I have 13 years old', '2023-01-18 13:16:49', 18);
 
 -- --------------------------------------------------------
 
@@ -87,7 +91,8 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `createdOn`) VALUES
 (17, 'ramy', 'ramymosalama0@gmail.com', '$2y$10$Droz23t/F0Sj4mhMCJ.IUOXM0mDclbT6WudxBU2NUyDDWXaxowgdy', '2023-01-11 17:48:17'),
-(18, 'yousif', 'yousifmoslama@gmail.com', '$2y$10$i5LuBG6cRdqJay2Xhv/n4OvEDV14.A3lMplJLp7j.mtlnqgttnNii', '2023-01-11 17:52:25');
+(18, 'yousif', 'yousifmoslama@gmail.com', '$2y$10$i5LuBG6cRdqJay2Xhv/n4OvEDV14.A3lMplJLp7j.mtlnqgttnNii', '2023-01-11 17:52:25'),
+(19, 'ali', 'alimoslama@gmail.com', '$2y$10$N87C.akxyr7oST0.gwzCkeo6HR56y1G5X8l5/A1rQpaUiH5CfS7fW', '2023-01-16 14:55:57');
 
 --
 -- Indexes for dumped tables
@@ -122,19 +127,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 --
 -- AUTO_INCREMENT for table `replies`
 --
 ALTER TABLE `replies`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=95;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=116;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- Constraints for dumped tables

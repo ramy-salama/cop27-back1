@@ -1,5 +1,3 @@
-
-
 <nav dir="ltr" class="navbar navbar-expand-lg bg-white navbar-light py-3 py-lg-0 px-3 px-lg-0 shadow-lg">
         <a href="index.html" class="navbar-brand ms-lg-5">
             <h1 class="display-5 m-0 text-primary">Safe<span class="text-secondary">World</span></h1>

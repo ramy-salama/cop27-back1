@@ -1,3 +1,4 @@
+<?php include ("control/Controller.php"); ?>
 <!DOCTYPE html>
 <html lang="en">
 

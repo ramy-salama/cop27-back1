@@ -52,8 +52,12 @@
             <input id="userPassword" class="pass-key" type="password" placeholder="password">
         </div>
         <div class="field1">
-            <button class="btn btn-sm mt-3 w-25 btn-primary" type="submit" name="submit" id="registerBtn">Register</button>
-        </div>      
+            <button class="btn btn-sm mt-3  btn-primary" type="submit" name="submit" id="registerBtn"data-i18n="signup">Register</button>
+        </div>     
+        <div class="signup">  
+            <span data-i18n="iAlready">I already have an account</span>
+            <a href="index.php" data-i18n="signin">Signin</a>
+        </div> 
 </div>
 
 
@@ -73,130 +77,7 @@
     <!-- trans code -->
     <script src="js/script.js"></script>
     <script type="text/javascript" src="js/login.js" ></script> 
-
-    <script type="text/javascript">
-        
-
-        var isReply = false, commentID = 0, max = <?php echo $numComments ?>;
-
-    $(document).ready(function () {
-        $("#addComment, #addReply").on('click', function () {
-            var comment;
-
-            if (!isReply)
-                comment = $("#mainComment").val();
-            else
-                comment = $("#replyComment").val();
-
-            if (comment.length > 5) {
-                $.ajax({
-                    url: 'index.php',
-                    method: 'POST',
-                    dataType: 'text',
-                    data: {
-                        addComment: 1,
-                        comment: comment,
-                        isReply: isReply,
-                        commentID: commentID
-                    }, success: function (response) {
-                        max++;
-                        $("#numComments").text(max + " Comments");
-
-                        if (!isReply) {
-                            $(".userComments").prepend(response);
-                            $("#mainComment").val("");
-                        } else {
-                            commentID = 0;
-                            $("#replyComment").val("");
-                            $(".replyRow").hide();
-                            $('.replyRow').parent().next().append(response);
-                        }
-                    }
-                });
-            } else
-                alert('Please Check Your Inputs');
-        });
-
-        $("#registerBtn").on('click', function () {
-            var name = $("#userName").val();
-            var email = $("#userEmail").val();
-            var password = $("#userPassword").val();
-
-            if (name != "" && email != "" && password != "") {
-                $.ajax({
-                    url: 'index.php',
-                    method: 'POST',
-                    dataType: 'text',
-                    data: {
-                        register: 1,
-                        name: name,
-                        email: email,
-                        password: password
-                    }, success: function (response) {
-                        if (response === 'failedEmail')
-                            alert('Please insert valid email address!');
-                        else if (response === 'failedUserExists')
-                            alert('User with this email already exists!');
-                        else
-                            window.location = window.location;
-                    }
-                });
-            } else
-                alert('Please Check Your Inputs');
-        });
-
-        $("#loginBtn").on('click', function () {
-            var email = $("#userLEmail").val();
-            var password = $("#userLPassword").val();
-
-            if (email != "" && password != "") {
-                $.ajax({
-                    url: 'index.php',
-                    method: 'POST',
-                    dataType: 'text',
-                    data: {
-                        logIn: 1,
-                        email: email,
-                        password: password
-                    }, success: function (response) {
-                        if (response === 'failed')
-                            alert('Please check your login details!');
-                        else
-                            window.location = window.location;
-                    }
-                });
-            } else
-                alert('Please Check Your Inputs');
-        });
-
-        getAllComments(0, max);
-    });
-
-    function reply(caller) {
-        commentID = $(caller).attr('data-commentID');
-        $(".replyRow").insertAfter($(caller));
-        $('.replyRow').show();
-    }
-
-    function getAllComments(start, max) {
-        if (start > max) {
-            return;
-        }
-
-        $.ajax({
-            url: 'index.php',
-            method: 'POST',
-            dataType: 'text',
-            data: {
-                getAllComments: 1,
-                start: start
-            }, success: function (response) {
-                $(".userComments").append(response);
-                getAllComments((start+20), max);
-            }
-        });
-    }
-</script>
+    <script type="text/javascript" src="js/ajax-code.js" ></script> 
 
 </body>
 </html>
