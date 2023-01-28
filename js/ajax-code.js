@@ -8,7 +8,7 @@ $(document).ready(function () {
 
         if (comment.length > 5) {
             $.ajax({
-                    url: 'index.php',
+                url: 'index.php',
                 method: 'POST',
                 dataType: 'text',
                 data: {
